@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import Button from "../../UI/Button/Button";
-import "./CourseInput.css";
+import styles from "./CourseInput.module.css";
+// import { FormControl } from "./CourseInput.style.js";
 
 const CourseInput = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -25,13 +26,31 @@ const CourseInput = (props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+      <div
+        className={`${styles["form-control"]} ${
+          !isValid ? styles.invalid : ""
+        }`}
+      >
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
   );
+
+  // STYLED-COMPONENTS
+  /*
+  return (
+    <form onSubmit={formSubmitHandler}>
+      <FormControl invalid={!isValid}>
+        <label>Course Goal</label>
+        <input type="text" onChange={goalInputChangeHandler} />
+      </FormControl>
+      <Button type="submit">Add Goal</Button>
+    </form>
+  );
+
+  */
 };
 
 export default CourseInput;
